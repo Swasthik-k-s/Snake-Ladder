@@ -25,17 +25,26 @@ public class SnakeAndLadder {
 			if(!key.equals("q")) {
 				die = random.nextInt(7-1)+1;
 				System.out.println("Die Number is " + die);
-				choice = random.nextInt(4-1)+1;
+				choice = 2;
 				if (choice == NO_PLAY) {
 					System.out.println("NO PLAY");
 					System.out.println("Player is at Position " + position);
 				} else if(choice == LADDER) {
 					System.out.println("LADDER");
-					position += die;
+					if(position + die <= 100) {
+						position += die;
+					}
 					System.out.println("Player is at Position " + position);
+					if(position == 100) {
+						System.out.println("Congratulations !!! You Won");
+						break;
+					}
 				} else if(choice == SNAKE) {
 					System.out.println("SNAKE");
 					position -= die;
+					if(position < 0) {
+						position = 0;
+					}
 					System.out.println("Player is at Position " + position);
 				}
 			} else {
