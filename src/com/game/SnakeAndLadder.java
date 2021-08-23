@@ -3,10 +3,14 @@ package com.game;
 import java.util.*;
 
 public class SnakeAndLadder {
+	public static final int NO_PLAY = 1;
+	public static final int LADDER = 2;
+	public static final int SNAKE = 3;
 
 	public static void main(String[] args) {
 		int position = 0;
 		int die;
+		int choice;
 		
 		System.out.println("Welcome to Snake And Ladder Game");
 		System.out.println("Player is at Position " + position);
@@ -15,14 +19,25 @@ public class SnakeAndLadder {
 		String key = "";
 		
 		while(!key.equals("q")) {
-			System.out.println("Enter any key and Enter to Roll the Die | Enter q to Quit");
-			key = input.next();
+			System.out.println("Press Enter to Roll the Die | Enter q to Quit");
+			key = input.nextLine();
 			
 			if(!key.equals("q")) {
 				die = random.nextInt(7-1)+1;
-				position += die;
 				System.out.println("Die Number is " + die);
-				System.out.println("Player is at Position " + position);
+				choice = random.nextInt(4-1)+1;
+				if (choice == NO_PLAY) {
+					System.out.println("NO PLAY");
+					System.out.println("Player is at Position " + position);
+				} else if(choice == LADDER) {
+					System.out.println("LADDER");
+					position += die;
+					System.out.println("Player is at Position " + position);
+				} else if(choice == SNAKE) {
+					System.out.println("SNAKE");
+					position -= die;
+					System.out.println("Player is at Position " + position);
+				}
 			} else {
 				System.out.println("Game Ended");
 				break;
