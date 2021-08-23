@@ -25,7 +25,8 @@ public class SnakeAndLadder {
 			if(!key.equals("q")) {
 				die = random.nextInt(7-1)+1;
 				System.out.println("Die Number is " + die);
-				choice = 2;
+				choice = random.nextInt(4-1)+1;
+				
 				if (choice == NO_PLAY) {
 					System.out.println("NO PLAY");
 					System.out.println("Player is at Position " + position);
